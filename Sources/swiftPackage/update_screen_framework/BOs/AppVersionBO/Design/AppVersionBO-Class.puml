@@ -1,0 +1,24 @@
+@startuml CarouselBO-Class
+
+package BOs {
+    package AppVersionBO {
+        struct AppVersionBO{
+            + id: UUID
+            + appVersion: String
+            + date: String
+            + image: String
+            + description: String
+            + features: [String]
+        }
+    }
+}
+
+package Pages {
+    package UpdateScreen{
+        class UpdateScreenVM {
+        }
+    }
+}
+
+AppVersionBO <-- UpdateScreenVM 
+@enduml

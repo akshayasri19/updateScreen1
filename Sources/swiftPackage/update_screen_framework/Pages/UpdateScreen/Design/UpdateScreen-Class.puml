@@ -1,0 +1,35 @@
+@startuml UpdateScreen - Class Diagram
+
+package Pages {
+    package UpdateScreen{
+        struct UpdateScreen {
+            - updateScreenVM: UpdateScreenVM
+        }
+
+        class UpdateScreenVM {
+            + init(): Void
+        }
+
+        class UpdateScreenModel {
+            + appVersionBO: AppVersionBO
+        }
+    }
+}
+
+package BOs {
+    package AppVersionBO {
+        struct AppVersionBO{
+            + id: UUID
+            + appVersion: String
+            + date: String
+            + image: String
+            + description: String
+            + features: [String]
+        }
+    }
+}
+UpdateScreen --> UpdateScreenVM : uses
+UpdateScreenVM --> UpdateScreenModel: extends
+UpdateScreenVM --> AppVersionBO
+
+@enduml

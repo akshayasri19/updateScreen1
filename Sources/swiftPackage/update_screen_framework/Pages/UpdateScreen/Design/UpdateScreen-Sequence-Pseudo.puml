@@ -1,0 +1,36 @@
+
+@startuml UpdateScreen- Sequence Pseudo
+
+!define POSITIVERESPONSE 90EE90
+!define NEGATIVEERESPONSE EFBBBB
+!define NUETRALRESPONSE F2DC79
+!define ALTBACKGROUND 6883BC
+skinparam sequence{
+ParticipantBackgroundColor #A7BEAE
+LifeLineBackgroundColor #E7E8D1
+LifeLineBorderColor #2C5F2D
+ActorBackgroundColor #FC766AFF
+ActorBorderColor #FC766AFF
+ArrowColor #B85042
+ArrowFontColor #234E70
+}
+ 
+autonumber 1
+hide footbox
+
+participant User as user order 1
+participant UpdateScreen as view order 2
+title UpdateScreen Page onAppear
+
+user -> view++: UpdateScreen **onAppear()**
+activate user
+view --> user--: Display the Update screen with version details
+deactivate user
+
+== init() - PSEUDOCODE ==
+ 
+hnote across
+    DISPLAY the Update screen with version details
+end hnote
+
+@enduml

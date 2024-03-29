@@ -1,0 +1,48 @@
+@startuml UpdateScreenVM - Sequence Pseudo
+
+!define POSITIVERESPONSE 90EE90
+!define NEGATIVEERESPONSE EFBBBB
+!define NUETRALRESPONSE F2DC79
+!define ALTBACKGROUND 6883BC
+skinparam sequence{
+ParticipantBackgroundColor #A7BEAE
+LifeLineBackgroundColor #E7E8D1
+LifeLineBorderColor #2C5F2D
+ActorBackgroundColor #FC766AFF
+ActorBorderColor #FC766AFF
+ArrowColor #B85042
+ArrowFontColor #234E70
+}
+ 
+autonumber 1
+hide footbox
+
+participant Caller as caller order 1
+participant UpdateScreenVM as vm order 2
+title init(): Void
+
+
+caller -> vm++: init()
+activate caller
+alt#ALTBACKGROUND TRY
+    vm-> vm : Create **AppVersionBO** object with the data and Set to the **appVersionBO**
+else  #NEGATIVEERESPONSE CATCH
+vm -> vm:  Write exception logs
+vm--> caller-- : Return
+end
+deactivate caller
+
+== init() - PSEUDOCODE ==
+ 
+hnote across
+**TRY**
+ 
+   Create **AppVersionBO** object with the data and Set to the **appVersionBO**
+ 
+**CATCH**
+ 
+   INVOKE **logException()** of Error class extension method using exception object of **error**
+ 
+end hnote
+
+@enduml
