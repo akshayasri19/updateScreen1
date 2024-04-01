@@ -13,14 +13,14 @@ let package = Package(
             targets: ["swiftPackage"]),
     ],   
     dependencies: [
-        .package(url: "https://github.com/akshayasri19/updateScreenPackage", .upToNextMajor(from: "1.0.0"))
+        .package(url: "https://github.com/akshayasri19/swiftPackage", from: "1.0.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "swiftPackage",
-            dependencies: ["updateScreenPackage"],
+            dependencies: ["swiftPackage"],
             resources: [
 //                .process("Sources/Resources"),
                 .copy("Sources/swiftPackage/update_screen_framework/Helpers/Resources/Fonts")
@@ -31,7 +31,8 @@ let package = Package(
         ),
         .testTarget(
             name: "swiftPackageTests",
-            dependencies: ["swiftPackage"]),
+            dependencies: ["swiftPackage"]
+        ),
        
     ]
 )
