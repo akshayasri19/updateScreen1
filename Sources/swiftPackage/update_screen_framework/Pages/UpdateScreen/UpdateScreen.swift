@@ -27,16 +27,17 @@ public struct UpdateScreen: View {
                             .onTapGesture {
                                 Task{
                                     await UpdateScreenConfig.dismissUpdateScreen()
+                                    
                                 }
                             }
                         Text("What’s")
-                            .foregroundStyle(Color(ColorStyles.secondaryDark))
+                            .foregroundStyle(.secondaryDark)
                         Text("New")
-                            .foregroundStyle(Color(ColorStyles.accent2))
+                            .foregroundStyle(.accent2)
                             .font(.custom(Styles.fontStyles.manropeBold,size: Styles.fontStyles.h1))
                         
                     }
-                    .font(.custom(Styles.fontStyles.manropeBold,size: Styles.fontStyles.h1))
+                    .font(.custom("Manrope-Bold",size: Styles.fontStyles.h1))
                     
                     
                     HStack {
@@ -46,13 +47,13 @@ public struct UpdateScreen: View {
                             .frame(height: 5)
                         Text("\(updateScreenVM.appVersionBO.date)")
                     }
-                    .foregroundStyle(Color(ColorStyles.textSecondary))
-                    .font(.custom(Styles.fontStyles.manropeRegular,size: Styles.fontStyles.linkText))
+                    .foregroundStyle(.textSecondary)
+                    .font(.custom("Manrope-Regular",size: Styles.fontStyles.linkText))
                     
                     ScrollView(showsIndicators: false) {
                         VStack(alignment: .leading){
                             // MARK: Add Image
-                            Image(uiImage: updateScreenVM.appVersionBO.image)
+                            Image(updateScreenVM.appVersionBO.image)
                                 .resizable()
                                 .frame(maxWidth: .infinity)
                                 .frame(height: Dimension.height(input: 146).equivalentValue)
@@ -60,20 +61,20 @@ public struct UpdateScreen: View {
                             
                             // MARK: Add description
                             Text("\(updateScreenVM.appVersionBO.description)")
-                                .font(.custom(Styles.fontStyles.manropeRegular,size: Styles.fontStyles.body1))
-                                .foregroundStyle(Color(ColorStyles.textSecondary))
+                                .font(.custom("Manrope-Regular",size: Styles.fontStyles.body1))
+                                .foregroundStyle(.textSecondary)
                                 .lineSpacing(5)
                                 .padding(.top)
                             
                             
                             HStack(spacing: 5) {
                                 Text("New")
-                                    .font(.custom(Styles.fontStyles.manropeSemiBold,size: Styles.fontStyles.subtitle1))
-                                    .foregroundStyle(Color(ColorStyles.secondaryLight))
+                                    .font(.custom("Manrope-SemiBold",size: Styles.fontStyles.subtitle1))
+                                    .foregroundStyle(.secondaryLight)
                                 
                                 Text("Features")
-                                    .font(.custom(Styles.fontStyles.manropeSemiBold,size: Styles.fontStyles.subtitle1))
-                                    .foregroundStyle(Color(ColorStyles.accent2))
+                                    .font(.custom("Manrope-SemiBold",size: Styles.fontStyles.subtitle1))
+                                    .foregroundStyle(.accent2)
                                 Spacer()
                             }
                             .padding(.top,30)
@@ -88,10 +89,10 @@ public struct UpdateScreen: View {
                                             .padding(.top, 8)
                                         
                                         Text(feature)
-                                            .font(.custom(Styles.fontStyles.manropeMedium,size: Styles.fontStyles.body))
+                                            .font(.custom("Manrope-Regular",size: Styles.fontStyles.body))
                                             .lineSpacing(5)
                                         Spacer()
-                                    }  .foregroundStyle(Color(ColorStyles.textSecondary))
+                                    }  .foregroundStyle(.textSecondary)
                                     
                                 }
                             }.padding(.vertical)
@@ -108,9 +109,9 @@ public struct UpdateScreen: View {
                         Text("Update")
                             .frame(maxWidth: .infinity)
                             .frame(height: Styles.buttonStyles.buttonHeight)
-                            .font(.custom(Styles.fontStyles.manropeSemiBold,size: Styles.fontStyles.body1))
-                            .background(Color(ColorStyles.secondaryLight))
-                            .foregroundColor(Color(ColorStyles.textLight))
+                            .font(.custom("Manrope-SemiBold",size: Styles.fontStyles.body1))
+                            .background(.secondaryLight)
+                            .foregroundColor(.textLight)
                             .cornerRadius(Styles.buttonStyles.buttonCornerRadius)
                     }
                     

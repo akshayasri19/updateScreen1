@@ -9,6 +9,8 @@
 import Foundation
 import SwiftUI
 import UIKit
+import CoreGraphics
+import CoreText
 
 /*
  Create a public enum for FontStyles
@@ -92,7 +94,7 @@ public class ImageLoader {
 }
 
 public class CustomFontLoader {
-    public static func loadCustomFont(fontName: String) {
+    public static func loadCustomFont(fontName: String) -> String {
         // Replace "YourCustomFontFileName" with the actual filename of your custom font
         if let fontUrl = Bundle(for: CustomFontLoader.self).url(forResource: fontName, withExtension: "ttf"),
            let fontData = try? Data(contentsOf: fontUrl) as CFData,
@@ -108,5 +110,86 @@ public class CustomFontLoader {
         } else {
             print("Font file not found or unable to load")
         }
+        
+        return fontName
     }
 }
+
+
+
+public extension Image {
+    static var yourImage: Image { .init( .icon as ImageResource) }
+
+init(_ image: Image) {
+        self = image
+    }
+}
+
+
+
+public extension Color {
+
+    static var accent1: Color { .init(.accent1)}
+    static var accent2: Color { .init(.accent2)}
+    static var background: Color { .init(.background)}
+    static var backgroundPrimary: Color { .init(.backgroundPrimary)}
+    static var backgroundSecondary: Color { .init(.backgroundSecondary)}
+    static var backgroundTertiary: Color { .init(.backgroundTertiary)}
+    static var error: Color { .init(.error)}
+    static var GR: Color { .init(.GR)}
+    static var neturalDark: Color { .init(.neturalDark)}
+    static var neturalLight: Color { .init(.neturalLight)}
+    static var neturalMedium: Color { .init(.neturalMedium)}
+    static var primaryLight: Color { .init(.primaryLight)}
+    static var primaryDark: Color { .init(.primaryDark)}
+    static var secondaryLight: Color { .init(.secondaryLight)}
+    static var secondaryDark: Color { .init(.secondaryDark) }
+    static var success: Color { .init(.success) }
+    static var textLight: Color { .init(.textLight) }
+    static var textPrimary: Color { .init(.textPrimary) }
+    static var textSecondary: Color { .init(.textSecondary) }
+    static var warning: Color { .init(.warning) }
+}
+
+public extension ShapeStyle where Self == Color {
+
+    static var accent1: SwiftUI.Color { .init(.accent1)}
+    static var accent2: SwiftUI.Color { .init(.accent2)}
+    static var background: SwiftUI.Color { .init(.background)}
+    static var backgroundPrimary: SwiftUI.Color { .init(.backgroundPrimary)}
+    static var backgroundSecondary: SwiftUI.Color { .init(.backgroundSecondary)}
+    static var backgroundTertiary: SwiftUI.Color { .init(.backgroundTertiary)}
+    static var error: SwiftUI.Color { .init(.error)}
+    static var GR: SwiftUI.Color { .init(.GR)}
+    static var neturalDark: SwiftUI.Color { .init(.neturalDark)}
+    static var neturalLight: SwiftUI.Color { .init(.neturalLight)}
+    static var neturalMedium: SwiftUI.Color { .init(.neturalMedium)}
+    static var primaryLight: SwiftUI.Color { .init(.primaryLight)}
+    static var primaryDark: SwiftUI.Color { .init(.primaryDark)}
+    static var secondaryLight: SwiftUI.Color { .init(.secondaryLight)}
+static var secondaryDark: SwiftUI.Color { .init(.secondaryDark) }
+    static var success: SwiftUI.Color { .init(.success) }
+    static var textLight: SwiftUI.Color { .init(.textLight) }
+    static var textPrimary: SwiftUI.Color { .init(.textPrimary) }
+    static var textSecondary: SwiftUI.Color { .init(.textSecondary) }
+    static var warning: SwiftUI.Color { .init(.warning) }
+}
+
+
+
+
+
+
+public enum FontError: Swift.Error {
+   case failedToRegisterFont
+}
+
+func registerFont(named name: String) throws {
+   guard let asset = NSDataAsset(name: "Fonts/\(name)", bundle: Bundle.module),
+      let provider = CGDataProvider(data: asset.data as NSData),
+      let font = CGFont(provider),
+      CTFontManagerRegisterGraphicsFont(font, nil) else {
+    throw FontError.failedToRegisterFont
+   }
+}
+

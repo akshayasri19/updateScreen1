@@ -16,16 +16,19 @@ final class UpdateScreenVM: UpdateScreenModel {
         do{
             super.init()
 //            Create **AppVersionBO** object with the data and Set to the **appVersionBO**
-            self.appVersionBO = AppVersionBO(appVersion: "6.2.4", date: "Jan 1, 2024", image: ImageLoader.loadImage()!, description: "Lorem ipsum dolor sit amet, consectetur adipiscing tra elit, sed do eiusmod tempor. Lorem ipsum dolor  amet tri consectetur adipiscing elit, sed do eiusmod tempor.", features: [
+            self.appVersionBO = AppVersionBO(appVersion: "6.2.4", date: "Jan 1, 2024", image: .icon, description: "Lorem ipsum dolor sit amet, consectetur adipiscing tra elit, sed do eiusmod tempor. Lorem ipsum dolor  amet tri consectetur adipiscing elit, sed do eiusmod tempor.", features: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
             ])
             
-            CustomFontLoader.loadCustomFont(fontName: "Manrope-Bold")
-            CustomFontLoader.loadCustomFont(fontName: "Manrope-Regular")
-            CustomFontLoader.loadCustomFont(fontName: "Manrope-SemiBold")
-            CustomFontLoader.loadCustomFont(fontName: "Manrope-Medium")
+            try registerFont(named: "Manrope-Bold")
+            try registerFont(named: "Manrope-ExtraBold")
+            try registerFont(named: "Manrope-ExtraLight")
+            try registerFont(named: "Manrope-Light")
+            try registerFont(named: "Manrope-Medium")
+            try registerFont(named: "Manrope-Regular")
+            try registerFont(named: "Manrope-SemiBold")
             
         }catch {
             // INVOKE **logException()** of Error class extension method using exception object of **error**

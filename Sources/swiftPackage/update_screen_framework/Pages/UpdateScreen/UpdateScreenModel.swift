@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 class UpdateScreenModel: ObservableObject {
-    @Published var appVersionBO = AppVersionBO(appVersion: "", date: "", image: ImageLoader.loadImage()!, description: "", features: [])
+    @Published var appVersionBO = AppVersionBO(appVersion: "", date: "", image: .icon, description: "", features: [])
     @Published var navUpdate: Bool = Bool.init()
 }

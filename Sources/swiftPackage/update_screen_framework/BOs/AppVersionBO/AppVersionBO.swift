@@ -12,7 +12,7 @@ struct AppVersionBO: Identifiable {
     var id: UUID = UUID()
     var appVersion: String
     var date: String
-    var image: UIImage
+    var image: ImageResource
     var description: String
     var features: [String]
 }
