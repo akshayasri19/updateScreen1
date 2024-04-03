@@ -13,7 +13,8 @@ let package = Package(
             targets: ["swiftPackage"]),
     ],   
     dependencies: [
-//        .package(url: "https://github.com/akshayasri19/swiftPackage", from: "1.0.0")
+        .package(url: "https://github.com/akshayasri19/updateScreen1", .upToNextMajor(from: "1.0.0"))
+
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -29,11 +30,15 @@ let package = Package(
             
             swiftSettings: [.define("ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS")]
         ),
+        
         .testTarget(
             name: "swiftPackageTests",
             dependencies: ["swiftPackage"]
         ),
        
     ]
+    
 )
 
+
+//        .package(url: "https://github.com/akshayasri19/swiftPackage", branch: "main")
